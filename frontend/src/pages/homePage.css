@@ -1,77 +1,115 @@
-.home-container {
-    text-align: center;
-    padding: 50px;
-    background-color: #f9fafc;
+/* General styles */
+body {
     font-family: 'Arial', sans-serif;
-}
-
-.home-header h1 {
-    font-size: 42px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.home-header p {
-    font-size: 20px;
-    color: #7f8c8d;
-    margin-bottom: 40px;
-}
-
-.service-cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.service-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .home-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
     text-align: center;
+  }
+  
+  /* Header styles */
+.home-header {
+    background: linear-gradient(135deg, #e7eaec, #343A40); /* Gradient for a modern look */
+    color: #fff;
+    padding: 60px 80px; /* Increased padding for better spacing */
+    border-radius: 15px; /* Softer edges */
+    margin-bottom: 40px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for a lifted effect */
+    text-align: center; /* Ensure text is centered */
+  }
+  
+  .home-header h1 {
+    font-size: 3rem; /* Larger font size for main title */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Optional: For emphasis */
+    letter-spacing: 2px; /* Slight spacing for a polished look */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+  }
+  
+  .home-header p {
+    font-size: 1.5rem; /* Larger font for subtitle */
+    line-height: 1.6; /* Improve readability */
+    margin-top: 10px;
+    font-style: italic; /* Optional: Add a unique style */
+  }
+  
+  
+  .home-header p {
+    font-size: 1.2rem;
+  }
+  
+  /* Service card container */
+  .service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  
+  /* Individual service card */
+  .service-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.service-card:hover {
+    overflow: hidden;
+  }
+  
+  .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.service-image {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .service-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .service-card h2 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #343A40;
+  }
+  
+  .service-card p {
+    padding: 0 15px;
+    font-size: 1rem;
+    color: #343A40;
     margin-bottom: 20px;
-}
-
-.service-card h2 {
-    font-size: 24px;
-    color: #34495e;
-    margin-bottom: 10px;
-}
-
-.service-card p {
-    font-size: 16px;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
-
-.service-button {
-    padding: 12px 20px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
+  }
+  
+  /* Button styles */
+  .service-button {
+    background-color: #343A40;
+    color: #fff;
     border: none;
     border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.service-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .service-button:hover {
+    background-color: #343A40;
+  }
+  
+  .service-button:active {
+    background-color: #343A40;
+  }
+  

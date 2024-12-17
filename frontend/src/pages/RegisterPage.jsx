@@ -2,19 +2,30 @@ import React, { useState } from 'react';
 import './registerPage.css';
 
 const RegisterPage = () => {
-    const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleRegister = (e) => {
         e.preventDefault();
+
+        // Validate password match
         if (password !== confirmPassword) {
             alert("Passwords don't match!");
             return;
         }
+
         // Handle registration logic here
-        console.log('Registering with:', username, email, password);
+        console.log('Registering with:', {
+            firstName,
+            lastName,
+            email,
+            phone,
+            password,
+        });
     };
 
     return (
@@ -23,9 +34,16 @@ const RegisterPage = () => {
                 <h2>Register</h2>
                 <input
                     type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                 />
                 <input
@@ -33,6 +51,13 @@ const RegisterPage = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="Phone Number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     required
                 />
                 <input
