@@ -13,6 +13,7 @@ import Footer from "./pages/Footer"; // Importing Footer
 // Importing admin components
 import AdminLogin from "./Admin/AdminLogin"; // Importing AdminLogin page
 import AdminRegister from "./Admin/AdminRegister"; // Importing AdminRegister page
+import AdminDashboard from "./Admin/AdminDashboard"; // Importing AdminDashboard page
 
 // Importing CSS files
 import "./pages/navbar.css"; // Navbar styles
@@ -22,6 +23,7 @@ import "./pages/registerPage.css"; // RegisterPage styles
 import "./pages/bookingPage.css"; // BookingPage styles
 import "./Admin/adminLogin.css"; // AdminLogin styles
 import "./Admin/adminRegister.css"; // AdminRegister styles
+import "./Admin/adminDashboard.css"; // AdminDashboard styles
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
           {/* Admin routes */}
           <Route path="/Admin/login" element={<AdminLogin />} /> {/* AdminLogin route */}
           <Route path="/Admin/register" element={<AdminRegister />} /> {/* AdminRegister route */}
+          <Route path="/Admin/dashboard" element={<AdminDashboard />} /> {/* AdminDashboard route */}
         </Routes>
       </div>
       {/* Footer at the bottom of every page */}
