@@ -1,53 +1,42 @@
-import React from "react";
+// import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-// Importing components and pages
-import Navbar from "./pages/Navbar"; // Importing Navbar component
-import HomePage from "./pages/HomePage"; // Importing HomePage
-import LoginPage from "./pages/LoginPage"; // Importing LoginPage
-import RegisterPage from "./pages/RegisterPage"; // Importing RegisterPage
-import ElectricianBooking from "./pages/ElectricianBooking"; // Importing ElectricianBooking
-import HouseCleaningBooking from "./pages/HouseCleaningBooking"; // Importing HouseCleaningBooking
-import Footer from "./pages/Footer"; // Importing Footer
+import React, { Suspense, lazy } from "react";
 
-// Importing admin components
-import AdminLogin from "./Admin/AdminLogin"; // Importing AdminLogin page
-import AdminRegister from "./Admin/AdminRegister"; // Importing AdminRegister page
-import AdminDashboard from "./Admin/AdminDashboard"; // Importing AdminDashboard page
+const Navbar = lazy(() => import("./pages/Navbar"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const ElectricianBooking = lazy(() => import("./pages/ElectricianBooking"));
+const HouseCleaningBooking = lazy(() => import("./pages/HouseCleaningBooking"));
+const Footer = lazy(() => import("./pages/Footer"));
 
-// Importing CSS files
-import "./pages/navbar.css"; // Navbar styles
-import "./pages/homePage.css"; // HomePage styles
-import "./pages/loginPage.css"; // LoginPage styles
-import "./pages/registerPage.css"; // RegisterPage styles
-import "./pages/bookingPage.css"; // BookingPage styles
-import "./Admin/adminLogin.css"; // AdminLogin styles
-import "./Admin/adminRegister.css"; // AdminRegister styles
-import "./Admin/adminDashboard.css"; // AdminDashboard styles
+const AdminLogin = lazy(() => import("./Admin/AdminLogin"));
+const AdminRegister = lazy(() => import("./Admin/AdminRegister"));
+const AdminDashboard = lazy(() => import("./Admin/AdminDashboard"));
 
 function App() {
   return (
     <Router>
-      {/* Navbar at the top of every page */}
-      <Navbar />
-      <div className="main-content">
-        {/* Defining the routes */}
-        <Routes>
-          {/* User routes */}
-          <Route path="/" element={<HomePage />} /> {/* HomePage route */}
-          <Route path="/login" element={<LoginPage />} /> {/* LoginPage route */}
-          <Route path="/register" element={<RegisterPage />} /> {/* RegisterPage route */}
-          <Route path="/electrician-booking" element={<ElectricianBooking />} /> {/* ElectricianBooking route */}
-          <Route path="/house-cleaning-booking" element={<HouseCleaningBooking />} /> {/* HouseCleaningBooking route */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navbar />
+        <div className="main-content">
+          <Routes>
+            {/* User routes */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/electrician-booking" element={<ElectricianBooking />} />
+            <Route path="/house-cleaning-booking" element={<HouseCleaningBooking />} />
 
-          {/* Admin routes */}
-          <Route path="/Admin/login" element={<AdminLogin />} /> {/* AdminLogin route */}
-          <Route path="/Admin/register" element={<AdminRegister />} /> {/* AdminRegister route */}
-          <Route path="/Admin/dashboard" element={<AdminDashboard />} /> {/* AdminDashboard route */}
-        </Routes>
-      </div>
-      {/* Footer at the bottom of every page */}
-      <Footer />
+            {/* Admin routes */}
+            <Route path="/Admin/login" element={<AdminLogin />} />
+            <Route path="/Admin/register" element={<AdminRegister />} />
+            <Route path="/Admin/dashboard" element={<AdminDashboard />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Suspense>
     </Router>
   );
 }
