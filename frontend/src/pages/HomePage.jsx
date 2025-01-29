@@ -22,7 +22,7 @@ const HomePage = () => {
           <p>Expert solutions for all your electrical needs. Reliable and safe service at your doorstep.</p>
           <button
             className="service-button"
-            onClick={() => navigate("/electrician-booking")}
+            onClick={() => navigate("/booking", { state: { serviceType: "Electrician" } })}
           >
             Book Electrician
           </button>
@@ -37,7 +37,7 @@ const HomePage = () => {
           <p>Professional cleaning to make your home spotless and welcoming.</p>
           <button
             className="service-button"
-            onClick={() => navigate("/house-cleaning-booking")}
+            onClick={() => navigate("/booking", { state: { serviceType: "Cleaning" } })}
           >
             Book Cleaning
           </button>
