@@ -1,14 +1,18 @@
-
 <?php
 $host = 'localhost';
-$dbname = 'service'; // Database name
-$username = 'root'; // Database username
-$password = ''; // Database password
+$dbname = 'service'; // Change to your actual database name
+$username = 'root';
+$password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Create a PDO instance
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable error reporting
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Fetch data as associative array
+        PDO::ATTR_EMULATE_PREPARES => false, // Disable emulated prepared statements
+    ]);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    error_log("Database connection failed: " . $e->getMessage()); // Log error (safer than displaying)
+    die("Database connection error! Please try again later."); // Generic message for security
 }
 ?>

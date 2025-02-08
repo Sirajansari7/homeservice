@@ -1,21 +1,43 @@
-// AdminRegister.jsx
 import React, { useState } from "react";
+import axios from "axios"; // Import Axios for API calls
 import "./adminRegister.css";
 
 const AdminRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(""); // To display messages
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Admin Registration: ", { name, email, password });
-    // Make API call here to register the admin
+
+    try {
+      const response = await axios.post(
+        "http://localhost/siraj/homeservice/service-backend/adminregister.php",
+        { name, email, password },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      setMessage(response.data.message);
+
+      if (response.data.status === "success") {
+        alert("Admin registered successfully!");
+        setName("");
+        setEmail("");
+        setPassword("");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      setMessage("An error occurred. Please try again.");
+    }
   };
 
   return (
     <div className="auth-container">
       <h2>Admin Register</h2>
+      {message && <p className="message">{message}</p>}
       <form onSubmit={handleRegister}>
         <div className="form-group">
           <label>Name:</label>
@@ -57,4 +79,3 @@ const AdminRegister = () => {
 };
 
 export default AdminRegister;
-
