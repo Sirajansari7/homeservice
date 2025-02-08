@@ -6,9 +6,15 @@ function Bookings() {
 
   // Fetch bookings data from the backend
   useEffect(() => {
-    fetch("/api/bookings")
+    fetch("http://localhost/siraj/homeservice/service-backend/getbookings.php")
       .then((res) => res.json())
-      .then((data) => setBookings(data))
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setBookings(data);
+        } else {
+          console.error("Invalid data received:", data);
+        }
+      })
       .catch((err) => console.error("Error fetching bookings:", err));
   }, []);
 
@@ -22,18 +28,24 @@ function Bookings() {
               <th>Booking ID</th>
               <th>Service</th>
               <th>Customer Name</th>
-              <th>Date</th>
-              <th>Status</th>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Area</th>
+              <th>Problem</th>
+              <th>Amount</th>
             </tr>
           </thead>
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking.id}>
                 <td>{booking.id}</td>
-                <td>{booking.service}</td>
-                <td>{booking.customerName}</td>
-                <td>{booking.date}</td>
-                <td>{booking.status}</td>
+                <td>{booking.serviceType}</td>
+                <td>{booking.cname}</td>
+                <td>{booking.contact}</td>
+                <td>{booking.caddress}</td>
+                <td>{booking.area ? `${booking.area} sq. ft.` : "N/A"}</td>
+                <td>{booking.problem || "N/A"}</td>
+                <td>₹{booking.amount}</td>
               </tr>
             ))}
           </tbody>

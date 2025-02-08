@@ -17,51 +17,57 @@ const BookingPage = () => {
   // Function to calculate amount based on service type
   const calculateAmount = () => {
     if (serviceType === "Cleaning") {
-      return area * 10;  // Example calculation for cleaning (₹10 per sq. ft.)
+      return area ? area * 10 : 0; // Example calculation for cleaning (₹10 per sq. ft.)
     } else if (serviceType === "Electrician") {
-      return problem.length * 20;  // Example calculation for electrician (₹20 per character of problem description)
+      return problem ? problem.length * 20 : 0; // Example calculation for electrician (₹20 per character of problem description)
     }
     return 0;
   };
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const amount = calculateAmount(); // Calculate amount before sending
+
+    if (!name || !contact || !address || !serviceType || amount <= 0) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
 
     const bookingData = {
       name,
       contact,
       address,
       serviceType,
-      area: serviceType === "Cleaning" ? area : undefined,
-      problem: serviceType === "Electrician" ? problem : undefined,
-      amount: calculateAmount(), // Calculate amount before sending
+      area: serviceType === "Cleaning" ? parseInt(area) : null,
+      problem: serviceType === "Electrician" ? problem : null,
+      amount, // Ensure amount is always included
     };
 
-    // Debug: Check what data is being sent
-    console.log("Booking Data: ", bookingData);
+    console.log("Sending booking data:", bookingData); // Debugging log
 
-    // Send the data to the backend (PHP API)
-    fetch("http://localhost/siraj/homeservice/service-backend/bookService.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bookingData),
-    })
-    .then((response) => response.json())
-    .then((data) => {
+    try {
+      const response = await fetch("http://localhost/siraj/homeservice/service-backend/bookService.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      const data = await response.json();
+
       if (data.message) {
-        alert(data.message); // Booking success
-        navigate("/"); // Redirect to home page after successful booking
+        alert(data.message); // Show success message
+        navigate("/"); // Redirect to home page
       } else if (data.error) {
-        alert(data.error); // Show error message from the backend
+        alert(data.error); // Show error message from backend
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Error:", error);
       alert("An error occurred while processing your request.");
-    });
+    }
   };
 
   return (
@@ -76,7 +82,7 @@ const BookingPage = () => {
           onChange={(e) => setName(e.target.value)}
           required
         />
-        
+
         {/* Contact Input */}
         <input
           type="text"
@@ -85,7 +91,7 @@ const BookingPage = () => {
           onChange={(e) => setContact(e.target.value)}
           required
         />
-        
+
         {/* Address Input */}
         <input
           type="text"
@@ -94,7 +100,7 @@ const BookingPage = () => {
           onChange={(e) => setAddress(e.target.value)}
           required
         />
-        
+
         {/* Service Type Dropdown */}
         <div className="dropdown">
           <label>Select Service</label>
