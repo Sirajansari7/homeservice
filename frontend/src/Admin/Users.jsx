@@ -4,9 +4,8 @@ import "./adminDashboard.css";
 function Users() {
   const [users, setUsers] = useState([]);
 
-  // Fetch users data from the backend
   useEffect(() => {
-    fetch("/api/users")
+    fetch("http://localhost/siraj/homeservice/service-backend/getUsers.php")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));
@@ -29,9 +28,9 @@ function Users() {
             {users.map((user) => (
               <tr key={user.id}>
                 <td>{user.id}</td>
-                <td>{user.name}</td>
+                <td>{user.username}</td>
                 <td>{user.email}</td>
-                <td>{user.phone}</td>
+                <td>{user.phone || "N/A"}</td>
               </tr>
             ))}
           </tbody>

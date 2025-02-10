@@ -1,19 +1,22 @@
-/* General footer styles */
 .footer-container {
-  background-color: #343A40;
-  color: #fff;
-  padding: 40px 20px;
+  width: 100%;
+  background-color: #2C2F33; /* Dark Grey */
+  color: #FFFFFF; /* White Text */
+  padding: 20px 0;
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  bottom: 0;
 }
 
 .footer-content {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
-  max-width: 1200px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 10px 20px;
 }
 
 .footer-address,
@@ -21,19 +24,21 @@
 .footer-others {
   flex: 1;
   min-width: 250px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.footer-address h3,
-.footer-social h3,
-.footer-others h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.footer-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #D1D1D1; /* Light Grey */
 }
 
-.footer-address p,
-.footer-others ul li a {
-  font-size: 1rem;
-  color: #ddd;
+.footer-content p,
+.footer-content ul {
+  font-size: 0.9rem;
+  color: #B0B0B0; /* Soft Grey */
 }
 
 .footer-others ul {
@@ -47,45 +52,37 @@
 
 .footer-others ul li a {
   text-decoration: none;
-  transition: color 0.3s;
+  color: #B0B0B0; /* Soft Grey */
+  transition: color 0.3s ease;
 }
 
 .footer-others ul li a:hover {
-  color: #007bff;
+  color: #FFFFFF; /* White on hover */
 }
 
-/* Social media icons */
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.social-icons a {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+.social-icons a img {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s ease;
+  filter: grayscale(100%); /* Makes icons grey */
 }
 
-.social-icons img {
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-.social-icons img:hover {
+.social-icons a img:hover {
   transform: scale(1.1);
+  filter: grayscale(0%); /* Restores color on hover */
 }
 
-/* Footer bottom styles */
 .footer-bottom {
-  margin-top: 20px;
-  border-top: 1px solid #444;
-  padding-top: 10px;
-}
-
-.footer-bottom p {
-  font-size: 0.9rem;
-  color: #bbb;
+  background-color: #3A3D41; /* Medium Grey */
+  padding: 8px 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+  color: #D1D1D1; /* Light Grey */
 }
