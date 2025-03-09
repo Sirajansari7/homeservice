@@ -1,19 +1,43 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./adminLogin.css";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Admin Login: ", { email, password });
-    // Make API call here to log in the admin
+
+    try {
+      const response = await axios.post(
+        "http://localhost/siraj/homeservice/service-backend/adminlogin.php",
+        { email, password },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      setMessage(response.data.message);
+
+      if (response.data.status === "success") {
+        alert("Login successful!");
+        localStorage.setItem("admin", JSON.stringify(response.data.user)); // Store admin details in local storage
+        navigate("/admin/dashboard"); // Redirect to dashboard after login
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setMessage("An error occurred. Please try again.");
+    }
   };
 
   return (
     <div className="auth-container">
       <h2>Admin Login</h2>
+      {message && <p className="message">{message}</p>}
       <form onSubmit={handleLogin}>
         <div className="form-group">
           <label>Email:</label>

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios for API calls
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./adminRegister.css";
 
 const AdminRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(""); // To display messages
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ const AdminRegister = () => {
         setName("");
         setEmail("");
         setPassword("");
+        navigate("/admin/login"); // Redirect to login page after successful registration
       } else {
         alert(response.data.message);
       }

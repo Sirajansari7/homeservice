@@ -1,7 +1,7 @@
 .footer-container {
   width: 100%;
-  background-color: #2C2F33; /* Dark Grey */
-  color: #FFFFFF; /* White Text */
+  background-color: #292b2c; /* Dark Grey */
+  color: #ffffff; /* White Text */
   padding: 20px 0;
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -32,13 +32,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #D1D1D1; /* Light Grey */
+  color: #d1d1d1; /* Light Grey */
 }
 
 .footer-content p,
 .footer-content ul {
   font-size: 0.9rem;
-  color: #B0B0B0; /* Soft Grey */
+  color: #b0b0b0; /* Soft Grey */
 }
 
 .footer-others ul {
@@ -52,12 +52,12 @@
 
 .footer-others ul li a {
   text-decoration: none;
-  color: #B0B0B0; /* Soft Grey */
+  color: #b0b0b0; /* Soft Grey */
   transition: color 0.3s ease;
 }
 
 .footer-others ul li a:hover {
-  color: #FFFFFF; /* White on hover */
+  color: #ffffff; /* White on hover */
 }
 
 .social-icons {
@@ -66,23 +66,23 @@
   gap: 10px;
 }
 
+/* ✅ Removed grayscale and kept original icon colors */
 .social-icons a img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   transition: transform 0.3s ease;
-  filter: grayscale(100%); /* Makes icons grey */
 }
 
+/* ✅ Only scale effect on hover (no color change) */
 .social-icons a img:hover {
   transform: scale(1.1);
-  filter: grayscale(0%); /* Restores color on hover */
 }
 
 .footer-bottom {
-  background-color: #3A3D41; /* Medium Grey */
+  background-color: #3a3d41; /* Medium Grey */
   padding: 8px 0;
   font-size: 0.8rem;
   font-weight: 500;
   text-align: center;
-  color: #D1D1D1; /* Light Grey */
+  color: #d1d1d1; /* Light Grey */
 }

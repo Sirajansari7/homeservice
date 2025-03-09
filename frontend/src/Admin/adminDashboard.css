@@ -1,9 +1,10 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f0f0f0; /* Very Light Grey */
   margin: 0;
   padding: 0;
+  color: #333; /* Dark Grey for contrast */
 }
 
 /* Admin Dashboard Layout */
@@ -16,8 +17,8 @@ body {
 /* Sidebar Styling */
 .sidebar {
   width: 250px;
-  background: #007bff;
-  color: white;
+  background: #e0e0e0; /* Light Grey */
+  color: #333; /* Dark Grey for visibility */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,7 @@ body {
 .sidebar h2 {
   margin-bottom: 20px;
   font-size: 22px;
+  color: #222; /* Slightly darker for better visibility */
 }
 
 .sidebar ul {
@@ -38,16 +40,26 @@ body {
 .sidebar ul li {
   padding: 12px 15px;
   margin: 5px 0;
-  background: #0056b3;
+  background: #d6d6d6; /* Soft Grey */
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Adds spacing between icon and text */
 }
 
 .sidebar ul li:hover,
 .sidebar ul li.active {
-  background: #004080;
+  background: #bfbfbf; /* Slightly darker grey */
+}
+
+/* Icon Styling */
+.sidebar ul li::before {
+  font-size: 18px;
 }
 
 /* Main Content Section */
@@ -55,6 +67,7 @@ body {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
+  background: #ffffff; /* White background for clarity */
 }
 
 /* Dashboard Sections */
@@ -80,8 +93,8 @@ body {
 }
 
 .dashboard-table th {
-  background: #007bff;
-  color: white;
+  background: #c4c4c4; /* Light Grey Header */
+  color: #333; /* Dark text for contrast */
 }
 
 /* Scrollable Tables */
@@ -91,7 +104,6 @@ body {
   border: 1px solid #ddd;
 }
 
-/* Bill Input Form */
 /* Bill Input Fields */
 .bill-input {
   display: flex;
@@ -105,9 +117,10 @@ body {
 .bill-textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb; /* Softer grey border */
   border-radius: 5px;
   font-size: 16px;
+  background: #f7f7f7; /* Light grey input fields */
 }
 
 .bill-textarea {
@@ -126,13 +139,13 @@ body {
 
 .bill-details h3 {
   text-align: center;
-  color: #007bff;
+  color: #444;
   margin-bottom: 10px;
 }
 
 .bill-details p {
   font-size: 16px;
-  color: #444;
+  color: #555;
   margin: 5px 0;
 }
 
@@ -144,7 +157,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background: #007bff;
+  background: #666; /* Dark Grey for contrast */
   border: none;
   border-radius: 5px;
   margin: 20px auto;
@@ -153,7 +166,7 @@ body {
 }
 
 .print-btn:hover {
-  background: #0056b3;
+  background: #4d4d4d; /* Slightly darker on hover */
 }
 
 /* Error Message */

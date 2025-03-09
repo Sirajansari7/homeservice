@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
 
     // Validate the input
-    $username = trim($input['username'] ?? '');
+    $email = trim($input['email'] ?? '');
     $password = $input['password'] ?? '';
 
     if (empty($username) || empty($password)) {
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Check if the admin exists
-        $stmt = $pdo->prepare("SELECT * FROM admins WHERE name = :username");
-        $stmt->execute([':username' => $username]);
+        $stmt = $pdo->prepare("SELECT * FROM admins WHERE email = :email");
+        $stmt->execute([':email' => $email]);
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($admin && password_verify($password, $admin['password'])) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import autoTable from "jspdf-autotable";
 import "./adminDashboard.css";
 
 function GenerateBill() {
@@ -20,22 +20,32 @@ function GenerateBill() {
   // Function to generate and download PDF
   const generatePDF = () => {
     const doc = new jsPDF();
+
     doc.setFont("helvetica", "bold");
     doc.text("Western Flex Home Service - Invoice", 20, 20);
-
+    
     doc.setFont("helvetica", "normal");
     doc.text(`Date: ${billDetails.date || "N/A"}`, 20, 30);
     doc.text(`Customer Name: ${billDetails.customerName || "N/A"}`, 20, 40);
-    doc.text(`Service Type: ${billDetails.serviceType || "N/A"}`, 20, 50);
-    doc.text(`Amount: ₹${billDetails.amount || "N/A"}`, 20, 60);
-    doc.text(`Description: ${billDetails.description || "N/A"}`, 20, 70);
+    
+    // Use autoTable to format service details properly
+    autoTable(doc, {
+      startY: 50,
+      head: [["Field", "Details"]],
+      body: [
+        ["Service Type", billDetails.serviceType || "N/A"],
+        ["Amount", `₹${billDetails.amount || "N/A"}`],
+        ["Description", billDetails.description || "N/A"],
+      ],
+    });
 
-    doc.save(`Invoice_${billDetails.customerName}.pdf`);
+    doc.save(`Invoice_${billDetails.customerName || "Bill"}.pdf`);
   };
 
   return (
     <section className="dashboard-section">
       <h2>Generate Bill</h2>
+      
       <div className="bill-input">
         <input
           type="text"

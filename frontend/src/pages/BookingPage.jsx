@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./bookingPage.css";
 
 const BookingPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Check if user is logged in
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      alert("You must be logged in to book a service.");
+      navigate("/login"); // Redirect to login page
+    }
+  }, [navigate]);
 
   // States to store user input
   const [name, setName] = useState("");
@@ -44,8 +53,6 @@ const BookingPage = () => {
       problem: serviceType === "Electrician" ? problem : null,
       amount, // Ensure amount is always included
     };
-
-    console.log("Sending booking data:", bookingData); // Debugging log
 
     try {
       const response = await fetch("http://localhost/siraj/homeservice/service-backend/bookService.php", {
