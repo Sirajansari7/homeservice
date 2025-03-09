@@ -23,8 +23,8 @@ const AdminLogin = () => {
 
       if (response.data.status === "success") {
         alert("Login successful!");
-        localStorage.setItem("admin", JSON.stringify(response.data.user)); // Store admin details in local storage
-        navigate("/admin/dashboard"); // Redirect to dashboard after login
+        localStorage.setItem("adminToken", response.data.token); // Save token
+        navigate("/admin/dashboard"); // Redirect to dashboard
       } else {
         alert(response.data.message);
       }

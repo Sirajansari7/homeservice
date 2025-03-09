@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start session to store admin data
+
 // Set headers for CORS and JSON response
 header("Access-Control-Allow-Origin: http://localhost:3000"); // Adjust this to match your frontend domain
 header("Access-Control-Allow-Methods: POST, OPTIONS");
@@ -35,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($input['email'] ?? '');
     $password = $input['password'] ?? '';
 
-    if (empty($username) || empty($password)) {
+    if (empty($email) || empty($password)) {
         http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Username and password are required."]);
+        echo json_encode(["status" => "error", "message" => "Email and password are required."]);
         exit;
     }
 
@@ -48,7 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($admin && password_verify($password, $admin['password'])) {
-            // Successful login
+            // Successful login: Store admin data in session
+            $_SESSION['admin_id'] = $admin['id'];
+            $_SESSION['admin_name'] = $admin['name'];
+            $_SESSION['admin_email'] = $admin['email'];
+
             http_response_code(200);
             echo json_encode([
                 "status" => "success",
@@ -62,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Invalid credentials
             http_response_code(401);
-            echo json_encode(["status" => "error", "message" => "Invalid username or password."]);
+            echo json_encode(["status" => "error", "message" => "Invalid email or password."]);
         }
     } catch (PDOException $e) {
         http_response_code(500);

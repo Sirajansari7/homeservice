@@ -1,10 +1,10 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Very Light Grey */
+  background-color: #f4f4f4; /* Softer Light Grey */
   margin: 0;
   padding: 0;
-  color: #333; /* Dark Grey for contrast */
+  color: #333;
 }
 
 /* Admin Dashboard Layout */
@@ -17,8 +17,8 @@ body {
 /* Sidebar Styling */
 .sidebar {
   width: 250px;
-  background: #e0e0e0; /* Light Grey */
-  color: #333; /* Dark Grey for visibility */
+  background: #333; /* Dark Grey */
+  color: #fff;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ body {
 .sidebar h2 {
   margin-bottom: 20px;
   font-size: 22px;
-  color: #222; /* Slightly darker for better visibility */
+  color: #fff;
 }
 
 .sidebar ul {
@@ -40,7 +40,7 @@ body {
 .sidebar ul li {
   padding: 12px 15px;
   margin: 5px 0;
-  background: #d6d6d6; /* Soft Grey */
+  background: #444; /* Slightly lighter grey */
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -49,17 +49,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Adds spacing between icon and text */
+  gap: 10px;
 }
 
 .sidebar ul li:hover,
 .sidebar ul li.active {
-  background: #bfbfbf; /* Slightly darker grey */
+  background: #555;
+  transform: scale(1.05);
 }
 
-/* Icon Styling */
-.sidebar ul li::before {
-  font-size: 18px;
+/* Logout Button */
+.logout-button {
+  margin-top: auto;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #d9534f; /* Red */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background: #c9302c; /* Darker Red */
 }
 
 /* Main Content Section */
@@ -87,14 +102,14 @@ body {
 
 .dashboard-table th,
 .dashboard-table td {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
 .dashboard-table th {
-  background: #c4c4c4; /* Light Grey Header */
-  color: #333; /* Dark text for contrast */
+  background: #555;
+  color: #fff;
 }
 
 /* Scrollable Tables */
@@ -117,10 +132,10 @@ body {
 .bill-textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #bbb; /* Softer grey border */
+  border: 1px solid #bbb;
   border-radius: 5px;
   font-size: 16px;
-  background: #f7f7f7; /* Light grey input fields */
+  background: #f7f7f7;
 }
 
 .bill-textarea {
@@ -157,7 +172,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background: #666; /* Dark Grey for contrast */
+  background: #007bff;
   border: none;
   border-radius: 5px;
   margin: 20px auto;
@@ -166,7 +181,7 @@ body {
 }
 
 .print-btn:hover {
-  background: #4d4d4d; /* Slightly darker on hover */
+  background: #0056b3;
 }
 
 /* Error Message */
@@ -187,6 +202,11 @@ body {
   }
 
   .dashboard-content {
+    padding: 10px;
+  }
+
+  .sidebar ul li {
+    font-size: 14px;
     padding: 10px;
   }
 }

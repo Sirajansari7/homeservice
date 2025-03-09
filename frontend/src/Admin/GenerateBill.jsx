@@ -22,7 +22,7 @@ function GenerateBill() {
     const doc = new jsPDF();
 
     doc.setFont("helvetica", "bold");
-    doc.text("Western Flex Home Service - Invoice", 20, 20);
+    doc.text(" Home Service - Invoice", 20, 20);
     
     doc.setFont("helvetica", "normal");
     doc.text(`Date: ${billDetails.date || "N/A"}`, 20, 30);
