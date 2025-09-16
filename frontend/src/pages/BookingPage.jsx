@@ -152,7 +152,7 @@ const BookingPage = () => {
         )}
 
         {/* Display the Total Amount */}
-        <h3>Total Amount: ₹{calculateAmount()}</h3>
+        <h3>Estimated Amount: ₹{calculateAmount()}</h3>
 
         {/* Submit Button */}
         <button type="submit">Confirm Booking</button>
